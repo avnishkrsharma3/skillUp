@@ -1,0 +1,24 @@
+    <h1 class="text-center">Course Details</h1>
+    <div id="section" class="container table-responsive">
+        <hr style="color: red; border: 2px solid red;">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Course Id</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Course Brief</th>
+                    <th scope="col">Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses">
+                    <td>{{course.courseId}}</td>
+                    <td>{{course.courseName}}</td>
+                    <td>{{course.courseBrief}}</td>
+                    <td>{{course.duration}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr style="color: red; border: 2px solid red;">
+        <!-- </div> -->
+    </div>

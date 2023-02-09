@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="login-box">
+    <div id="invalid" *ngIf="flag">Invalid credentials</div>
+    <h2>Login</h2>
+    <form autocomplete="off" (ngSubmit)="onLogin()" class = "needs-validation">
+        <div class="user-box">
+            <input type="text" [(ngModel)]="credentials.userName" id="validationCustom01" required name="email"
+                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+                [class.is-invalid]="email.invalid && email.touched" required>
+            <label>Username</label>
+        </div>
+        <div class="user-box">
+            <input type="password" name="password" required autocomplete="do-not-autofill"
+                [(ngModel)]="credentials.password">
+            <!-- <div *ngIf="credentials.password.length <=4  && flag" style="color:red;">password length is less than four.</div> -->
+            <label>Password</label>
+        </div>
+        <button type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Login
+        </button>
+        <span class="one">
+            <a routerLink="/register">Click Here for Registration</a>
+        </span>
+
+    </form>
+</div>

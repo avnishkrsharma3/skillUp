@@ -1,0 +1,40 @@
+<h1 class="text-center">User Details</h1>
+    <div id="section" class="container table-responsive">
+        <!-- <input type="text" [(ngModel)]="userType1"> -->
+        <input name="role1" type="radio" #inputBox (change)="onChange('student', inputBox?.checked)" name="userSelect"/>Students
+        <input name="role2" type="radio" #inputBox1 (change)="onChange('instructor', inputBox1?.checked )" name="userSelect" />Instructors
+        <input name="role2" type="radio" #inputBox1 (change)="onChange('all', inputBox1?.checked )" name="userSelect" />Select All
+
+        <!-- <daiv style="width: 60%; margin: 1em auto" class="table-responsive"> -->
+        <hr style="color: red; border: 2px solid red;">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">User Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Cohort Id</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.userId }}</td>
+                    <td>{{user.firstName | uppercase}}</td>
+                    <td>{{user.lastName | uppercase}}</td>
+                    <td>{{user.email | uppercase}}</td>
+                    <td>{{user.userType | uppercase}}</td>
+                    <td>{{user.cohortId }}</td>
+                    <td *ngIf="user.userType.toLowerCase() === 'instructor'">
+                        <button (click)="updateUser(user.userId)" class="btn btn-primary">Update</button>
+                        <button (click)="deleteUser(user.userId)" class="btn btn-danger"
+                            style="margin-left: 10px;">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr style="color: red; border: 2px solid red;">
+        <!-- </div> -->
+    </div>
