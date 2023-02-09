@@ -30,15 +30,11 @@ export class UserService {
     return this.http.get<User>(`${this.url}/type/${userType}`, {  headers:new HttpHeaders().append('Authorization', `Bearer ${this.authToken}`)});
   }
 
-  getUsers(): Observable<User> {
-    return this.http.get<User>(`${this.url}/`, {  headers: this.headers});
-  }
-
   addUser(user: User): Observable<Object> {
     return this.http.post(`${this.url}`, user, {  headers:new HttpHeaders().append('Authorization', `Bearer ${this.authToken}`)});
   }
   
-   updateUser(id: number, user: User): Observable<Object> {
+  updateUser(id: number, user: User): Observable<Object> {
     console.log("inside update user user service");
     console.log(id);
     console.log(user);

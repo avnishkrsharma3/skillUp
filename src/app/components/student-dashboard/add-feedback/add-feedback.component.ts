@@ -17,7 +17,7 @@ export class AddFeedbackComponent {
   constructor(private feedbackService: UserService, private loginService:LoginServiceService ,private router: Router) {
     console.log('inside constructor');
     console.log(this.item);
-    if(loginService.getId()!=-1) this.studentId = loginService.getId();
+    if(loginService.getId()!=-1) this.feedback.studentId = loginService.getId();
     console.log(loginService.getId());
   }
 
@@ -34,10 +34,13 @@ export class AddFeedbackComponent {
   }
 
   onSubmit() {
+    console.log(this.feedback);
     this.saveFeedback();
   }
 
   onCancel() {
-    this.router.navigate(["/view-feedback"]);
+    this.feedback.feedbackText = '';
+    // window.location.reload();
+    this.router.navigate(['studentDashboard']);
   }
 }

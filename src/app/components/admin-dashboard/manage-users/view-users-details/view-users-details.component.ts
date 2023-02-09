@@ -20,33 +20,17 @@ export class ViewUsersDetailsComponent implements OnInit {
     //   this.users = data;
     // })
     console.log("inside ngOnIt running.......................")
-    this.getUsers();
-    console.log(this.users);
-
-  }
-
-  getUsers() {
-    this.userService.getUsers().subscribe(data => {
-      this.users = data;
-    })
   }
 
   onChange(role: string, isChecked: any) {
     
     if (isChecked) {
       this.userType = role;
-      if(this.userType === 'all'){
-        console.log('onchange all part running..............')
-        this.getUsers();
-      }
       this.userService.getUserList(this.userType).subscribe((data) => {
         this.users = data;
         console.log(this.users);
       })
-    } else {
-      console.log('onchange else part running..............')
-      this.getUsers();
-    }
+    } 
   }
 
   updateUser(id: number) {
