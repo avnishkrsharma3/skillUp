@@ -30,7 +30,7 @@ export class CohortService {
   }
 
   addCohort(cohort: Cohort): Observable<Object> {
-    return this.http.post(`${this.url}`, cohort, { headers: this.headers });
+    return this.http.post(`${this.url}`, cohort, { headers: this.headers, responseType:'json' });
   }
 
   updateCohort(id: number, cohort: Cohort): Observable<Object> {

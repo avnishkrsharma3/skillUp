@@ -98,5 +98,7 @@ export class StudentDashboardComponent {
       this.viewCourseData = true;
     }
   }
-  
+  showEdit(id: number, userType: String) {
+    this.router.navigate([`edit-profile/${userType}/${id}`]);
+  }
 }

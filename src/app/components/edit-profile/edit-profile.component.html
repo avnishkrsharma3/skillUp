@@ -1,12 +1,11 @@
 <div class="col-md-6 offset-md-3">
-    <h1 class="text-primary">Add User Record</h1>
-     <form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
+    <h1 class="text-primary">Edit Profile</h1>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
         <div class="form-group">
             <label for="userId">User Id</label>
-            <input  type="number" class="form-control" id="userId" name="userId" [(ngModel)]="id" readonly
+            <input type="number" class="form-control" id="userId" name="userId" [(ngModel)]="id" readonly
                 [ngModelOptions]="{standalone: true}" />
-            <!-- <input type="number"  class="form-control" id="userId" name="userId" [(ngModel)]="id" 
-                [ngModelOptions]="{standalone: true}" /> -->
+
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"
                 [ngModelOptions]="{standalone: true}" />
@@ -22,17 +21,24 @@
             <div class="form-group">
                 <label for="userType">User Type</label><br>
                 <input type="radio" id="userType" name="userType" value="student" [(ngModel)]="user.userType"
-                    [ngModelOptions]="{standalone: true}" />Student
+                    [ngModelOptions]="{standalone: true}" [disabled]="true" />Student
                 <input type="radio" id="userType" name="userType" value="instructor" [(ngModel)]="user.userType"
-                    [ngModelOptions]="{standalone: true}" />Instructor
+                    [ngModelOptions]="{standalone: true}" [disabled]="true" />Instructor
             </div>
 
             <label for="cohortId">Cohort Id</label>
             <input type="number" class="form-control" id="cohortId" name="cohortId" [(ngModel)]="user.cohortId"
+                [ngModelOptions]="{standalone: true}" readonly>
+
+            <!-- <select class="form-control" id="cohortId" name="cohortId" [(ngModel)]="user.cohortId"
                 [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let cohort of cohorts" [value]="cohort.id">{{ user.cohortId }}</option>
+            </select> -->
+
             <br>
+
             <!-- <button class="btn btn-success" type="submit">Submit</button> -->
-            <input type="submit"  class="btn btn-primary" value="Update" ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="btn btn-primary" value="Update" ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
         </div>
     </form>

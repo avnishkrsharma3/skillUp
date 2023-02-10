@@ -16,7 +16,12 @@ import { UpdateUsersDetailsComponent } from './components/admin-dashboard/manage
 import { ManageUsersComponent } from './components/admin-dashboard/manage-users/manage-users.component';
 import { ViewCoursesComponent } from './components/admin-dashboard/view-courses/view-courses.component';
 import { AddFeedbackComponent } from './components/student-dashboard/add-feedback/add-feedback.component';
-import { ManageCohortComponent } from './components/admin-dashboard/manage-cohort/manage-cohort.component'
+import { ManageCohortComponent } from './components/admin-dashboard/manage-cohort/manage-cohort.component';
+import { ViewCohortComponent } from './components/admin-dashboard/manage-cohort/view-cohort/view-cohort.component';
+import { UpdateCohortComponent } from './components/admin-dashboard/manage-cohort/update-cohort/update-cohort.component';
+import { AddCohortComponent } from './components/admin-dashboard/manage-cohort/add-cohort/add-cohort.component';
+import { AddUsersDetailsComponent } from './components/admin-dashboard/manage-users/add-users-details/add-users-details.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +39,11 @@ import { ManageCohortComponent } from './components/admin-dashboard/manage-cohor
     ViewCoursesComponent,
     AddFeedbackComponent,
     ManageCohortComponent,
+    ViewCohortComponent,
+    UpdateCohortComponent,
+    AddCohortComponent,
+    AddUsersDetailsComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

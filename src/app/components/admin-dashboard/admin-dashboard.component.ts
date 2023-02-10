@@ -87,6 +87,7 @@ export class AdminDashboardComponent implements OnInit{
     if (input === 'edituser') {
       console.log('inside if condidtion of edit user');
       this.manageUsersData = true;
+      this.router.navigate(['adminDashboard']);
     } else if (input === 'managebatch') {
       this.manageBatchData = true;
     } else if (input === 'viewfeedback') {
@@ -96,6 +97,9 @@ export class AdminDashboardComponent implements OnInit{
     }else if(input === 'viewCourse'){
       this.viewCourseData = true;
     }
+  }
+  showEdit(id: number, userType: String) {
+    this.router.navigate([`edit-profile/${userType}/${id}`]);
   }
 
 }

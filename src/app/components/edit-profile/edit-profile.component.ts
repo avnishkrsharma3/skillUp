@@ -2,16 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { UserService } from 'src/app/service/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 
 @Component({
-  selector: 'app-update-users-details',
-  templateUrl: './update-users-details.component.html',
-  styleUrls: ['./update-users-details.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class UpdateUsersDetailsComponent {
-
+export class EditProfileComponent {
   id!: number;
   user: User = new User();
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
@@ -27,23 +24,22 @@ export class UpdateUsersDetailsComponent {
       // window.location.reload();
       console.log('after insertion in to database')
       console.log(data);
-      window.location.reload();
-    })
-  }
-  onSubmitInsert(user : User){
-    this.userService.addUser(this.user).subscribe(data => {
       // window.location.reload();
-      console.log('after insertion in to database')
-      console.log(data);
-      window.location.reload();
+      this.gotoUserList(this.user.userType);
     })
   }
 
-  gotoUserList() {
-    this.router.navigate(['/adminDashboard/view-user']);
+  gotoUserList(userType: string) {
+    if (userType === 'admin') {
+
+      this.router.navigate([`${userType}Dashboard/view-user`]);
+    }
+    else {
+      this.router.navigate([`${userType}Dashboard`]);
+    }
   }
 
   onCancel() {
-    this.gotoUserList();
+    this.gotoUserList(this.user.userType);
   }
 }

@@ -16,9 +16,10 @@ export class ViewUsersDetailsComponent implements OnInit {
   constructor(private http: HttpClient, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.userService.getUsers().subscribe((data) => {
-    //   this.users = data;
-    // })
+    this.userService.getUserList('student').subscribe((data) => {
+      this.users = data;
+      console.log(this.users);
+    })
     console.log("inside ngOnIt running.......................")
   }
 
@@ -37,7 +38,13 @@ export class ViewUsersDetailsComponent implements OnInit {
     console.log(id);
     console.log("inside update user");
     console.log(this.route);
-    this.router.navigate([`adminDashboard/edit/${id}`] );
+    this.router.navigate([`adminDashboard/edit-user/${id}`] );
+  }
+  addUser(id: number) {
+    console.log(id);
+    console.log("inside update user");
+    console.log(this.route);
+    this.router.navigate([`adminDashboard/add-user/${id}`] );
   }
 
   deleteUser(id: number) {

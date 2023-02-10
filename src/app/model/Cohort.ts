@@ -2,7 +2,7 @@
 
 export class  Cohort {
     cohortId!:number
-    startData!:Date
+    startDate!:Date
     endDate!:Date
     duration!:number
     instructorId!:number

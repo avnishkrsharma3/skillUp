@@ -8,12 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ManageUsersComponent {
 
-  constructor(private route: ActivatedRoute, private router : Router){}
+  constructor(private route: ActivatedRoute, private router : Router){
+    this.router.navigate(['adminDashboard/view-user']);
+  }
   showEdit(){
-    this.router.navigate(['edit', 1], {relativeTo: this.route} );
+    this.router.navigate(['adminDashboard/edit-user', 1]);
   }
   showView(){
-    this.router.navigate(['view'], {relativeTo: this.route} );
+    this.router.navigate(['adminDashboard/view-user']);
   }
 
 }

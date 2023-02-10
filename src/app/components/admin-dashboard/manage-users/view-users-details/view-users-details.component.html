@@ -1,6 +1,8 @@
 <h1 class="text-center">User Details</h1>
     <div id="section" class="container table-responsive">
         <!-- <input type="text" [(ngModel)]="userType1"> -->
+        <button (click)="addUser(users.userId)" class="btn btn-primary">Add User</button>
+        <span style="margin-left:10px;"></span>
         <input name="role1" type="radio" #inputBox (change)="onChange('student', inputBox?.checked)" name="userSelect"/>Students
         <input name="role2" type="radio" #inputBox1 (change)="onChange('instructor', inputBox1?.checked )" name="userSelect" />Instructors
 
@@ -26,7 +28,7 @@
                     <td>{{user.email | uppercase}}</td>
                     <td>{{user.userType | uppercase}}</td>
                     <td>{{user.cohortId }}</td>
-                    <td *ngIf="user.userType.toLowerCase() === 'instructor'">
+                    <td>
                         <button (click)="updateUser(user.userId)" class="btn btn-primary">Update</button>
                         <button (click)="deleteUser(user.userId)" class="btn btn-danger"
                             style="margin-left: 10px;">Delete</button>

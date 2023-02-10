@@ -1,0 +1,35 @@
+<div class="col-md-6 offset-md-3">
+    <h1>Add Cohort</h1>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div *ngIf="errorMessage">
+                <span style="color: red;"> {{ errorMessage }} </span>
+            </div>
+            <!-- <label for="cohortId">Cohort Id</label>
+                <input type="number" class="form-control" id="cohortId" name="cohortId" [(ngModel)]="cohort.cohortId"> -->
+
+            <label for="duration">Duration</label>
+            <input type="number" class="form-control" id="duration" name="duration" [(ngModel)]="cohort.duration">
+
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="cohort.startDate">
+
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="cohort.endDate">
+
+            <label for="instructorId">Instructor Id</label>
+            <input type="number" class="form-control" id="instructorId" name="instructorId"
+                [(ngModel)]="cohort.instructorId">
+            <br>
+            <select [(ngModel)]="selectedId">
+                <option *ngFor="let title of courses" [value]="title.courseId">
+                    {{title.courseId}}
+                </option>
+            </select>
+
+            <button class="btn btn-success" type="submit">
+                Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>
