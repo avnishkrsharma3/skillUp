@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cohort } from '../model/Cohort';
 import { Course } from '../model/Course';
+import { environment } from '../../environments/environment';
+const { cohortBaseUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,8 @@ export class CohortService {
   cohort: any;
   urlcourse: any;
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8082/cohort/';
-    this.urlcourse = 'http://localhost:8082/cohort/course/'
+    this.url = `${cohortBaseUrl}/cohort/`;
+    this.urlcourse = `${cohortBaseUrl}/cohort/course/`;
     this.authToken = localStorage.getItem('token');
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
