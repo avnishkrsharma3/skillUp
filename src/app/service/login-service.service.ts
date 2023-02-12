@@ -22,6 +22,7 @@ export class LoginServiceService {
     localStorage.setItem("token", token);
     localStorage.setItem("userType", userType);
     localStorage.setItem("userId", idInteger);
+    
   }
   
   isLoggedIn():boolean{

@@ -13,7 +13,7 @@ export class ViewCohortComponent {
   type:any;
   constructor(private http: HttpClient, private cohortService: CohortService, private router: Router) {
     this.type=localStorage.getItem('userType');
-   }
+  }
 
   ngOnInit(): void {
     this.getAllCohorts();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
@@ -15,21 +15,20 @@ export class RegisterComponent implements OnInit{
   }
   
   registerForm: FormGroup;
-  user = new User();
   msg='Invalid Details';
   flag = false;
   constructor(private formBuilder: FormBuilder, private registerService : RegisterService, private router : Router) {
     this.registerForm = this.formBuilder.group({
-      firstName: [this.user.firstName, Validators.required],
-      lastName: [this.user.lastName, Validators.required],
-      email: [this.user.email, [Validators.required, Validators.email]],
-      password: [this.user.password, [Validators.required, Validators.minLength(6)]],
-      userType: [this.user.userType]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      userType: ['', [Validators.required]]
     });
   }
 
   onSubmit() {
-    this.registerService.registerUser(this.user).subscribe(
+    this.registerService.registerUser(this.registerForm.value).subscribe(
       (response:any) => {
         console.log(response);
         alert('Registration Successful')
@@ -42,7 +41,23 @@ export class RegisterComponent implements OnInit{
         this.msg = error.error.message;
       }
     );
-    console.log(this.user);
+    console.log(this.registerForm.value);
+  }
+
+  get firstName(){
+    return this.registerForm.get('firstName');
+  }
+  get lastName(){
+    return this.registerForm.get('lastName');
+  }
+  get email(){
+    return this.registerForm.get('email');
+  }
+  get password(){
+    return this.registerForm.get('password');
+  }
+  get userType(){
+    return this.registerForm.get('userType');
   }
 
   

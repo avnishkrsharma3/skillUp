@@ -11,6 +11,8 @@ export class RegisterService {
 
   registerUser(user: any) {
     //token generate
+    
+    console.log(user);
     return this.http.post(`${this.url}`, user);
   }
 

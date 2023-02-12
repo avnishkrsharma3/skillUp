@@ -1,6 +1,6 @@
-<body>
-    <div class="col-md-6 offset-md-3">
+    <div *ngIf="isAlloted" class="col-md-6 offset-md-3">
         <h1>Give feedback</h1>
+        <h6 *ngIf="isError">{{msg}}</h6>
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="studentId">Enter Student Id</label>
@@ -15,4 +15,6 @@
             </div>
         </form>
     </div>
-</body>
+    <div *ngIf="!isAlloted" class="col-md-6 offset-md-3">
+        <h3>No cohort is alloted so can't give feedback!</h3>
+    </div>

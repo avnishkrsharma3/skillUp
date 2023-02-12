@@ -21,6 +21,7 @@ export class AdminDashboardViewfeedbackComponent {
     this.feedbackService.getAllFeedbacks().subscribe(
       (response: any) => {
         this.feedbacks = response;
+        console.log(this.feedbacks);
       },
       error => {
         console.log('error');

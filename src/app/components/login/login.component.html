@@ -2,20 +2,19 @@
 <div class="login-box">
     <div id="invalid" *ngIf="flag">Invalid credentials</div>
     <h2>Login</h2>
-    <form autocomplete="off" (ngSubmit)="onLogin()" class = "needs-validation">
+    <form autocomplete="off" (ngSubmit)="onLogin()" class="needs-validation" [formGroup]="user_form" >
         <div class="user-box">
-            <input type="text" [(ngModel)]="credentials.userName" id="validationCustom01" required name="email"
-                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
-                [class.is-invalid]="email.invalid && email.touched" required>
+            <input type="text" id="validationCustom01" name="userName" formControlName="userName">
             <label>Username</label>
+            <span *ngIf="userName && userName.invalid && userName.touched" style="color:rgb(247, 22, 22);">Email is
+                not valid..</span>
         </div>
         <div class="user-box">
-            <input type="password" name="password" required autocomplete="do-not-autofill"
-                [(ngModel)]="credentials.password">
-            <!-- <div *ngIf="credentials.password.length <=4  && flag" style="color:red;">password length is less than four.</div> -->
+            <input type="password" name="password" autocomplete="do-not-autofill" formControlName="password" >
             <label>Password</label>
+            <span *ngIf="password && password.invalid && password.touched" style="color:red">Enter valid format..</span>
         </div>
-        <button type="submit">
+        <button type="submit" [disabled]="user_form.invalid">
             <span></span>
             <span></span>
             <span></span>

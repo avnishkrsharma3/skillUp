@@ -21,7 +21,8 @@ import { ViewCohortComponent } from './components/admin-dashboard/manage-cohort/
 import { UpdateCohortComponent } from './components/admin-dashboard/manage-cohort/update-cohort/update-cohort.component';
 import { AddCohortComponent } from './components/admin-dashboard/manage-cohort/add-cohort/add-cohort.component';
 import { AddUsersDetailsComponent } from './components/admin-dashboard/manage-users/add-users-details/add-users-details.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component'
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ViewSelelectedCohortsComponent } from './components/student-dashboard/view-selelected-cohorts/view-selelected-cohorts.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     AddCohortComponent,
     AddUsersDetailsComponent,
     EditProfileComponent,
+    ViewSelelectedCohortsComponent,
   ],
   imports: [
     BrowserModule,

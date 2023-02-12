@@ -3,15 +3,21 @@
         <div class="col-2=avnish">
             <form class="signupAvnishform" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
                 <h1>Register</h1>
-                <div id="invalid" *ngIf="flag" style="color:red; font-size:20px">{{msg}}</div>
-                <input class="input" type="text" formControlName="firstName" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name" /><br >
-                <input class="input" type="text" formControlName="lastName" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" /> <br>
-                <input class="input" type="email" formControlName="email"  [(ngModel)]="user.email" name="email" placeholder="Email" /> <br />
-                <input class="input" type="password" formControlName="password"  [(ngModel)]="user.password" name="password" placeholder="Password" /> <br />
-                <input class="radio" type="radio" formControlName="userType" [(ngModel)]="user.userType" value="student" name="userType"><label class="radio" for="userType">Student</label>
-                <span></span>
-                <input class="radio" type="radio" formControlName="userType" [(ngModel)]="user.userType" value="admin" name="userType"><label class  = "radio" for="userType">Instructor</label>
-                <button type="submit"  class="sumbit">Click Here For Registration</button>
+                <div id="invalid" *ngIf="flag" style="color:red; font-size:20px" >{{msg}}</div>
+                <input class="input" type="text" formControlName="firstName"  name="firstName" placeholder="First Name" /><br >
+                <span *ngIf="firstName && firstName.invalid && firstName.touched" style="color:red">firstName is not valid</span>
+
+                <input class="input" type="text" formControlName="lastName"  name="lastName" placeholder="Last Name" /> <br>
+                <span *ngIf="lastName && lastName.invalid && lastName.touched" style="color:red">lastName is not valid</span>
+                <input class="input" type="email" formControlName="email"  name="email" placeholder="Email" /> <br />
+                <span *ngIf="email && email.invalid && email.touched" style="color:red">Email is not valid...</span>
+                <input class="input" type="password" formControlName="password"  name="password" placeholder="Password" /> <br />
+                <div *ngIf="password && password.invalid && password.touched" style="color:red">Enter Password...</div>
+                <input class="radio" type="radio" formControlName="userType"  value="student" name="userType" style="color:red"><label class="radio" for="userType">Student</label>
+                <span class="span"></span>
+                <input class="radio" type="radio" formControlName="userType" value="instructor" name="userType" style="color:red"><label class  = "radio" for="userType">Instructor</label>
+                <span *ngIf="userType && userType.invalid && userType.touched" >Select a userType</span>
+                <button type="submit"  class="sumbit" [disabled]="registerForm.invalid">Click Here For Registration</button>
                 <a routerLink="/login" style="text-align: center;">Login</a>
             </form>
     </div>

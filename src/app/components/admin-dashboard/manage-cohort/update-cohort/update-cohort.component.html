@@ -1,7 +1,6 @@
-<body>
     <div class="col-md-6 offset-md-3">
         <h1>Add Cohort</h1>
-        <form #cohortForm="ngForm" (ngSubmit)="onSubmit(cohortForm.value)">
+        <form #cohortForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="cohortId">Cohort Id</label>
                 <input type="number" class="form-control" id="cohortId" name="cohortId" [(ngModel)]="cohort.cohortId"
@@ -9,26 +8,40 @@
 
                 <label for="courseId">Course Id</label>
                 <!-- <input type="number" class="form-control" id="courseId" name="courseId" [(ngModel)]="cohort.courseId"> -->
-
                 <label for="duration">Duration</label>
                 <input type="number" class="form-control" id="duration" name="duration" [(ngModel)]="cohort.duration">
-
+    
                 <label for="startDate">Start Date</label>
-                <input type="date" class="form-control" id="startDate" name="startDate"
-                    [value]="cohort.startDate | date:'yyyy-MM-dd'">
-
+                <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="cohort.startDate">
+    
                 <label for="endDate">End Date</label>
-                <input type="date" class="form-control" id="endDate" name="endDate"
-                    [value]="cohort.endDate | date:'yyyy-MM-dd'">
-
-                <label for="instructorId">Instructor Id</label>
+                <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="cohort.endDate">
+    
+                <!-- <label for="instructorId">Choose Instructor for this Cohort</label>
                 <input type="number" class="form-control" id="instructorId" name="instructorId"
                     [(ngModel)]="cohort.instructorId">
-
-                <br>
-                <input type="submit" class="btn btn-primary" value="Update" ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
+                <br> -->
+                <label for="instrucotorId">Choose Instructor for this Cohort</label>
+                <select class="form-control" [(ngModel)]="userId" name="userId">
+                    <option id="instrucotorId" *ngFor="let user of users" [ngValue]="user.userId" >
+                        <!-- Id: &nbsp;{{user.userId}} &nbsp; -->
+                        {{user.firstName | uppercase}}
+                    </option>
+                    ?&gt;
+                </select>
+    
+                <label for="courseId">Selector Course</label>
+                <select class="form-control" [(ngModel)]="courseId" name="courseId">
+                    <option id="courseId" *ngFor="let course of courses" [ngValue]="course.courseId">
+                        {{course.courseName | uppercase}}
+                    </option>
+                    ?&gt;
+                </select>
+    
+                <button class="btn btn-success" type="submit" style="margin: 30px;">
+                    Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+                
             </div>
         </form>
     </div>
-</body>

@@ -31,6 +31,7 @@ export class StudentDashboardComponent {
         console.log(response);
         console.log(response.userType);
         this.userDetails = response;
+        localStorage.setItem('cohortId', this.userDetails.cohortId);
       },
       error => {
         console.log("Inside Error");

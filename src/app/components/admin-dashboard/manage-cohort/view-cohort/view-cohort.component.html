@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th scope="col">Cohort Id</th>
-                    <th scope="col">Course Id</th>
+                    <th scope="col">Course Name</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
@@ -16,7 +16,7 @@
             <tbody>
                 <tr *ngFor="let cohort of cohorts">
                     <td>{{cohort.cohortId}}</td>
-                    <td>{{cohort.courseId}}</td>
+                    <td>{{cohort.courseName | uppercase}}</td>
                     <td>{{cohort.duration}}</td>
                     <td>{{cohort.startDate | date}}</td>
                     <td>{{cohort.endDate | date}}</td>

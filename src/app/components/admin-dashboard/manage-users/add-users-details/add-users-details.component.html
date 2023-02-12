@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
     <h1 class="text-primary">Add User Record</h1>
-    <form #userForm="ngForm" (ngSubmit)="onSubmitInsert(userForm.value)">
+    <form #userForm="ngForm" (ngSubmit)="onSubmitInsert(userForm.value)" name="ngForm">
         <div class="form-group">
             <!-- <label for="userId">User Id</label> -->
             <!-- <input  type="number" class="form-control" id="userId" name="userId" [(ngModel)]="id" readonly
@@ -23,19 +23,21 @@
                 [ngModelOptions]="{standalone: true}" />
             <div class="form-group">
                 <label for="userType">User Type</label><br>
-                <input type="radio" id="userType" name="userType" value="student" [(ngModel)]="user.userType"
+                <input type="radio"  name="userType" value="student" [(ngModel)]="user.userType"
                     [ngModelOptions]="{standalone: true}" />Student
-                <input type="radio" id="userType" name="userType" value="instructor" [(ngModel)]="user.userType"
+                <input type="radio"  name="userType" value="instructor" [(ngModel)]="user.userType"
                     [ngModelOptions]="{standalone: true}" />Instructor
             </div>
-
-            <label for="cohortId">Cohort Id</label>
-            <input type="number" class="form-control" id="cohortId" name="cohortId" [(ngModel)]="user.cohortId"
-                [ngModelOptions]="{standalone: true}">
-            <br>
+            <label for="cohortId">Select Cohort</label>
+            <select  class="form-control" name="cohortId" [(ngModel)]="user.cohortId">
+                <option id="cohortId" *ngFor="let cohort of cohorts"  [ngValue]="cohort.cohortId">
+                    {{cohort.cohortId}}
+                </option>
+                ?&gt;
+            </select>
             <!-- <button class="btn btn-success" type="submit">Submit</button> -->
-            <input type="submit" class="btn btn-primary" value="Add" ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+            <input type="submit" class="btn btn-primary" value="Add"  ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="onCancel()" name="cancel">Cancel</button>
         </div>
     </form>
 </div>

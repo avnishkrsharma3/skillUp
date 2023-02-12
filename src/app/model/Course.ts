@@ -5,5 +5,4 @@ export class Course{
     courseName!:string;
     courseBrief!:string;
     duration!:number;
-    cohortList!:Cohort[];
 }

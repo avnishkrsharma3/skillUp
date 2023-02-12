@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
-    <h1 class="text-primary">Add User Record</h1>
-     <form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
+    <h1 class="text-primary">Update User Record</h1>
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
         <div class="form-group">
             <label for="userId">User Id</label>
             <input  type="number" class="form-control" id="userId" name="userId" [(ngModel)]="id" readonly
@@ -27,9 +27,13 @@
                     [ngModelOptions]="{standalone: true}" />Instructor
             </div>
 
-            <label for="cohortId">Cohort Id</label>
-            <input type="number" class="form-control" id="cohortId" name="cohortId" [(ngModel)]="user.cohortId"
-                [ngModelOptions]="{standalone: true}">
+            <label for="cohortId">Select Cohort</label>
+            <select  class="form-control" name="cohortId" [(ngModel)] = "user.cohortId">
+                <option id="cohortId" *ngFor="let cohort of cohorts" [ngValue]="cohort.cohortId">
+                    {{cohort.cohortId}}
+                </option>
+                ?&gt;
+            </select>
             <br>
             <!-- <button class="btn btn-success" type="submit">Submit</button> -->
             <input type="submit"  class="btn btn-primary" value="Update" ngModel />&nbsp;&nbsp;&nbsp;&nbsp;
