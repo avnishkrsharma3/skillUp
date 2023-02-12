@@ -15,11 +15,11 @@
             </tr>
         </thead>
         <tbody>
-            <td>{{cohort.courseName}}</td>
-            <td>{{cohort.duration}}</td>
-            <td>{{cohort.startDate | date}}</td>
-            <td>{{cohort.endDate | date}}</td>
-            <td>{{cohort.instructorId}}</td>
+            <td>{{cohort?.courseName}}</td>
+            <td>{{cohort?.duration}}</td>
+            <td>{{cohort?.startDate | date}}</td>
+            <td>{{cohort?.endDate | date}}</td>
+            <td>{{cohort?.instructorId}}</td>
             <!-- <td>
                     <button (click)="updateCohort(cohort.cohortId)" class="btn btn-primary">Update</button>
                     <button (click)="deleteCohort(cohort.cohortId)" class="btn btn-danger"

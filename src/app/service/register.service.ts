@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+const { authBaseUrl, usersBaseUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
-  url = 'http://localhost:8084/user/users'
+  url = `${usersBaseUrl}/user/users`;
   constructor(private http: HttpClient) { }
 
   registerUser(user: any) {

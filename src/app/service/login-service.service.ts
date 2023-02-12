@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+const { usersBaseUrl, authBaseUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  urlLogin = 'http://localhost:8081/auth/user';
-  urlGetUserById = 'http://localhost:8084/user/users'
+  urlLogin = `${authBaseUrl}/auth/user`;
+  urlGetUserById = `${usersBaseUrl}/user/users`;
   authToken: any = '';
   headers: any;
   constructor(private http: HttpClient, private router: Router) { }

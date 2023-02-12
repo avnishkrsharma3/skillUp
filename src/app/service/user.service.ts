@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Feedback } from '../model/Feedback';
 import { User } from '../model/User';
-
+import { environment } from '../../environments/environment';
+const { usersBaseUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,14 @@ export class UserService {
   headers: any;
   urlfeedback!: string
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8084/user/users';
-    this.urlfeedback = 'http://localhost:8084/user/feedback';
+    this.url = `${usersBaseUrl}/user/users`;
+    this.urlfeedback = `${usersBaseUrl}/user/feedback`;
     this.authToken = localStorage.getItem('token');
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authToken}`
     })
+    console.log(`${usersBaseUrl}/user/users`);
   }
 
   getUserList(userType: string): Observable<User> {
