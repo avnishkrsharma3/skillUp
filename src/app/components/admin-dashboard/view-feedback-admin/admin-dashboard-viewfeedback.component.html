@@ -1,21 +1,20 @@
-    <h1 class="text-center">Feedback Details</h1>
-    <div id="section" class="container table-responsive">
-        <hr style="color: red; border: 2px solid red;">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Student Name</th>
-                    <th scope="col">Feedback</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let feedback of feedbacks">
-                    <td>{{feedback.studentId}}</td>
-                    <td>{{feedback.feedbackText}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr style="color: red; border: 2px solid red;">
-        <!-- </div> -->
-    </div>
-    
+<h1 class="text-center">Feedback Details</h1>
+<div id="section" class="container table-responsive">
+    <hr style="color: red; border: 2px solid red;">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Student Name</th>
+                <th scope="col">Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let feedback of feedbacks">
+                <td>{{feedback.userName}}</td>
+                <td>{{feedback.feedbackText}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr style="color: red; border: 2px solid red;">
+    <!-- </div> -->
+</div>

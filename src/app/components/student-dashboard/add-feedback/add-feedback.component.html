@@ -1,20 +1,20 @@
-    <div *ngIf="isAlloted" class="col-md-6 offset-md-3">
-        <h1>Give feedback</h1>
-        <h6 *ngIf="isError">{{msg}}</h6>
-        <form (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="studentId">Enter Student Id</label>
-                <input type="number" class="form-control" id="studentId" name="studentId"
-                    [(ngModel)]="feedback.studentId" readonly>
-                <label for="feedbackText">Give your valuable feedback</label>
-                <textarea class="form-control" id="feedbackText" name="feedbackText"
-                    [(ngModel)]="feedback.feedbackText"></textarea>
-                <br>
-                <button class="btn btn-success" type="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
-            </div>
-        </form>
-    </div>
-    <div *ngIf="!isAlloted" class="col-md-6 offset-md-3">
-        <h3>No cohort is alloted so can't give feedback!</h3>
-    </div>
+<div *ngIf="isAlloted" class="col-md-6 offset-md-3">
+    <h1>Give feedback</h1>
+    <h6 *ngIf="isError">{{msg}}</h6>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="studentId">Enter Student Id</label>
+            <input type="number" class="form-control" id="studentId" name="studentId" [(ngModel)]="feedback.user.userId"
+                readonly>
+            <label for="feedbackText">Give your valuable feedback</label>
+            <textarea class="form-control" id="feedbackText" name="feedbackText"
+                [(ngModel)]="feedback.feedbackText"></textarea>
+            <br>
+            <button class="btn btn-success" type="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="!isAlloted" class="col-md-6 offset-md-3">
+    <h3>No cohort is alloted so can't give feedback!</h3>
+</div>

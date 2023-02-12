@@ -1,7 +1,7 @@
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Feedback } from 'src/app/model/Feedback';
+import { SendFeedback, UserId } from 'src/app/model/SendFeedback';
 import { CohortService } from 'src/app/service/cohort.service';
 import { LoginServiceService } from 'src/app/service/login-service.service';
 import { UserService } from 'src/app/service/user.service';
@@ -12,12 +12,11 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./add-feedback.component.css']
 })
 export class AddFeedbackComponent {
-  feedback: Feedback = new Feedback();
+  feedback: SendFeedback = new SendFeedback();
   studentId: any;
-  msg:string='';
+  msg: string = '';
   isAlloted: boolean = true;
   isError = false;
-  x: any = null;
   @Input()
   item!: number;
   constructor(private feedbackService: UserService,
@@ -25,23 +24,28 @@ export class AddFeedbackComponent {
     private cohortService: CohortService,
     private router: Router) {
     console.log('inside add feedback constructor');
-    console.log(localStorage.getItem('cohortId') === this.x);
     if (localStorage.getItem('cohortId') === 'null') {
       this.isAlloted = false;
       console.log(this.isAlloted)
     }
     console.log('inside constructor');
     console.log(this.item);
-    if (loginService.getId() != -1) this.feedback.studentId = loginService.getId();
+    if (loginService.getId() != -1) {
+      let userId = new UserId();
+      userId.userId = loginService.getId();
+      this.feedback.user = userId;
+      console.log(loginService.getId());
+    }
+    // this.feedback.studentId = loginService.getId();
     console.log(loginService.getId());
   }
 
   saveFeedback() {
-    this.feedbackService.addFeedback(this.feedback).subscribe(data =>
-      {
-        console.log(data);
-        this.goToFeedbackList();
-      }
+    console.log(this.feedback);
+    this.feedbackService.addFeedback(this.feedback).subscribe(data => {
+      console.log(data);
+      this.goToFeedbackList();
+    }
     )
   }
 
