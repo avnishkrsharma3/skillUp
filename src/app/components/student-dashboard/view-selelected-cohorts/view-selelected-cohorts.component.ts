@@ -11,28 +11,32 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ViewSelelectedCohortsComponent {
   cohort: any;
-  cohortId:any;
-  flag:boolean = false;;
+  cohortId: any;
+  flag: boolean = false;
+  isCohort = false;
   constructor(private http: HttpClient, private cohortService: CohortService,
     private userService: UserService,
     private router: Router) {
-        if(localStorage.getItem('cohortId')==='null'){
-          this.flag = true;
-        }else{
-          this.cohortId = localStorage.getItem('cohortId');
-          console.log('constructor caling view alloted cohort');
-          console.log(this.cohortId);
-        }
+    if (localStorage.getItem('cohortId') === 'null') {
+      this.flag = true;
+    } else {
+      this.cohortId = localStorage.getItem('cohortId');
+      console.log('constructor caling view alloted cohort');
+      console.log(this.cohortId);
+      this.getAllCohorts();
+      console.log(this.cohort);
     }
+  }
 
   ngOnInit(): void {
-    this.getAllCohorts();
-    console.log(this.cohort);
+
   }
 
   getAllCohorts() {
     this.cohortService.getCohortById(this.cohortId).subscribe(data => {
       this.cohort = data;
+      console.log(this.cohort);
+      //console.log(this.cohort);
     })
   }
 
@@ -45,5 +49,5 @@ export class ViewSelelectedCohortsComponent {
       this.ngOnInit();
     })
   }
-  
+
 }

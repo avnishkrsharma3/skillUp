@@ -13,7 +13,7 @@ export class CohortService {
   authToken: any = '';
   headers: any;
   cohort: any;
-  urlcourse:any;
+  urlcourse: any;
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:8082/cohort/';
     this.urlcourse = 'http://localhost:8082/cohort/course/'
@@ -31,7 +31,7 @@ export class CohortService {
 
   addCohort(cohort: any): Observable<Object> {
     console.log('adding cohort');
-    return this.http.post(`${this.url}`, cohort, { headers: this.headers, responseType:'json' });
+    return this.http.post(`${this.url}`, cohort, { headers: this.headers, responseType: 'json' });
   }
 
   updateCohort(id: number, cohort: any): Observable<Object> {
@@ -43,6 +43,7 @@ export class CohortService {
   }
 
   getCohortById(id: number): Observable<Cohort> {
+    console.log(`${this.url}${id}`);
     return this.http.get<Cohort>(`${this.url}${id}`, { headers: this.headers });
   }
   // get courses
@@ -51,7 +52,7 @@ export class CohortService {
     console.log(this.urlcourse);
     return this.http.get<Course>(`${this.urlcourse}`, { headers: this.headers });
   }
-  getCourseByCohortId(id:any){
-    return this.http.get<any>(`${this.urlcourse}${id}`, {headers: this.headers});
+  getCourseByCohortId(id: any) {
+    return this.http.get<any>(`${this.urlcourse}${id}`, { headers: this.headers });
   }
 }
